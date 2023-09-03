@@ -1,0 +1,5 @@
+number = int(input())
+myScores = list(map(int, input().split()))
+maxScore = max(myScores)
+sumScores = sum(myScores)
+print(sumScores*100/(maxScore*number))
