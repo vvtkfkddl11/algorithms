@@ -19,7 +19,7 @@ for i in range(len(s)):
     elif flag:
         newString = newString + s[i]
     else:
-        if s[i] == " ":  # + 마지막 인덱스일때
+        if s[i] == " ":
             arr.append(newString + " ")
             newString = ""
         else:
