@@ -3,8 +3,8 @@ def solution(lottos, win_nums):
     rank = {1: 6, 2: 5, 3: 4, 4: 3, 5: 2}  # 순위, 당첨 일치 개수
     count_win = 0
     count_zero = 0
-    max_rank = 6
-    min_rank = 6
+    max_rank = 0
+    min_rank = 0
 
     for i in lottos:
         if i in win_nums:
