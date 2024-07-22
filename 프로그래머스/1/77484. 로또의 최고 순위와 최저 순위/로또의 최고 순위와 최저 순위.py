@@ -6,7 +6,6 @@ def solution(lottos, win_nums):
     max_rank = 0
     min_rank = 0
 
-
     for i in lottos:
         if i in win_nums:
             count += 1
