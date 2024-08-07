@@ -1,13 +1,13 @@
 import sys
 from collections import deque
 
-n, m = map(int, sys.stdin.readline().split())  # 노드, 엣지 개수
+n, m = map(int, sys.stdin.readline().split())
 graph = [[] for _ in range(n+1)]
 answer = [0]*(n+1)
 max_value = 0
 
 
-def bfs(v):
+def dfs(v):
     queue = deque()
     queue.append(v)
     visited[v] = 1
@@ -20,13 +20,13 @@ def bfs(v):
                 queue.append(i)
 
 
-for i in range(m):
+for _ in range(m):  # 간선 수만큼
     a, b = map(int, sys.stdin.readline().split())
     graph[a].append(b)
 
 for i in range(1, n+1):
     visited = [0]*(n+1)
-    bfs(i)
+    dfs(i)
 
 for i in range(1, n+1):
     max_value = max(max_value, answer[i])
