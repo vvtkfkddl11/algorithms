@@ -1,18 +1,16 @@
-# 11659 구간 합 구하기
-
 import sys
-input = sys.stdin.readline
 
-numberOfData, numberOfLines = map(int, input().split())
-numbers = list(map(int, input().split()))
+n, m = map(int, sys.stdin.readline().split())
 
-prefix_sum = [0]
+numbers = list(map(int, sys.stdin.readline().split()))
+sums = []
 temp = 0
+sums.append(temp)
 
 for i in numbers:
-    temp = temp + i
-    prefix_sum.append(temp)
+    temp += i
+    sums.append(temp)
 
-for j in range(numberOfLines):
-    numI, numJ = map(int, input().split())
-    print(prefix_sum[numJ]-prefix_sum[numI-1])
+for i in range(m):
+    a, b = map(int, sys.stdin.readline().split())
+    print(sums[b]-sums[a-1])
