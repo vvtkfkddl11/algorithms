@@ -1,57 +1,32 @@
-# from itertools import combinations
-# def solution(cards):
-#     answer = 0
-#     graph = [[] for i in range(len(cards))]
-#     com = list(map(list, combinations(cards, 2)))
-#     print(com)
-    
-#     for i in range(len(cards)):  # enumerate
-#         graph[i].append(cards[i])
-        
-#     def dfs(node):
-#         return 0
-    
-#     for i in com:
-#         visited = [0]*len(cards)
-#         dfs(i)
-        
-#     for i in graph:
-#         visited = [0]*len(cards)
-        
-#         dfs(i)
-    
-    
-#     print(graph)
-#     return answer
-
-
 from itertools import combinations
 
-def dfs(cards, visited, start):
-    group_size = 0
-    current = start
-    
-    while not visited[current]:
-        visited[current] = True
-        next_box = cards[current] - 1  # 카드 번호가 다음 상자의 인덱스를 나타냅니다
-        current = next_box
-        group_size += 1
-    
-    return group_size
-
 def solution(cards):
+    answer = 0
     n = len(cards)
-    visited = [False] * n
+    graph = [[] for i in range(n)]
+    visited = [0]*n
     group_sizes = []
+    max_score = 0
+        
+    def dfs(cards, start):
+        group_size = 0
+        cur = start
     
-    # 모든 상자를 탐색하면서 그룹 크기를 구합니다.
+        while not visited[cur]:
+            visited[cur] = 1
+            next_box = cards[cur] - 1  # 카드 번호 = 다음 상자의 인덱스
+            cur = next_box
+            group_size += 1
+    
+        return group_size
+
+    # 모든 상자 탐색 - 그룹 크기 구함
     for i in range(n):
         if not visited[i]:
-            group_size = dfs(cards, visited, i)
+            group_size = dfs(cards, i)
             group_sizes.append(group_size)
     
-    # 최대 점수 계산 (두 개의 그룹 크기를 곱함)
-    max_score = 0
+    # 최대 점수 계산
     if len(group_sizes) > 1:
         for group1, group2 in combinations(group_sizes, 2):
             max_score = max(max_score, group1 * group2)
