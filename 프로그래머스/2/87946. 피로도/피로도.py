@@ -1,21 +1,20 @@
 from itertools import permutations
 
 def solution(k, dungeons):
-    answer = 0
-    new = list(permutations(dungeons, len(dungeons)))
-    temp = [list(item) for item in new]
-    arr = []
-    max_cnt = 0
-    for i in range(len(temp)):
-        cnt = 0
+    answer = -1
+    com = list(map(list, permutations(dungeons, len(dungeons))))
+    # print(com)
+    max_v = 0
+    
+    for i in range(len(com)):
         cur_k = k
-        for j in range(len(temp[0])):
-            if cur_k >= temp[i][j][0]:
-                cur_k -= temp[i][j][1]
+        cnt = 0
+        for j in range(len(com[i])):
+            if cur_k >= com[i][j][0]:
+                cur_k -= com[i][j][1]
                 cnt += 1
-                # print(cur_k, temp[i][j][0], temp[i][j][1])
-                # print("cnt: ", cnt)
             else:
-                break   
-        max_cnt = max(max_cnt, cnt)
-    return max_cnt
+                break
+        max_v = max(max_v, cnt)
+    
+    return max_v
