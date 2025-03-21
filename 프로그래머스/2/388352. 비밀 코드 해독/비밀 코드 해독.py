@@ -24,5 +24,5 @@ def solution(n, q, ans):
                 break
         if common == ans:
             answer += 1
-            
+
     return answer
