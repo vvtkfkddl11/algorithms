@@ -1,12 +1,15 @@
+from collections import deque
+
 def solution(arr):
     answer = []
-    # 스택 or 큐 사용
-    i = 1
-    while i < len(arr):
-        if arr[i] == arr[i-1]:
-            arr.pop(i)
-        else:
-            i += 1
-        
-    answer = arr
+    queue = deque(arr)
+    x = queue.popleft()
+    answer.append(x) 
+    while queue:
+        nx = queue.popleft()
+        if x != nx:
+            answer.append(nx) 
+        if queue:
+            x = nx
+            
     return answer
