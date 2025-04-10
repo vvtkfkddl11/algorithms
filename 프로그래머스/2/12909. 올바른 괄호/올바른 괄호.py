@@ -1,12 +1,13 @@
 def solution(s):
-    cnt = 0
+    answer = True
+    a = 0
     for i in s:
-        if i == '(':
-            cnt += 1
+        if i == "(":
+            a += 1
         else:
-            cnt -= 1
-        if cnt < 0:
-            break
-    if cnt == 0:
-        return True
-    return False
+            a -= 1
+        if a < 0:
+            return False
+    if a != 0:
+        return False
+    return True
