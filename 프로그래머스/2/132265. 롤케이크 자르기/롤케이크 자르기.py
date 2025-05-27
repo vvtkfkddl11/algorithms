@@ -5,7 +5,7 @@
 2. 역방향 계산: 뒤에서부터도 누적 계산해서 대칭 구조 활용
 '''
 def solution(topping):
-    answer = []
+    answer = 0
     right_num, left_num = [], []
     right_set, left_set = set(), set()
     for i in topping:
@@ -18,6 +18,5 @@ def solution(topping):
         left_types = right_num[i]        # 왼쪽 토핑 종류 수
         right_types = left_num[len(left_num) - i - 2]  # 오른쪽 토핑 종류 수
         if left_types == right_types:    # 양쪽 종류 수가 같으면
-            answer.append(i)             # 해당 자르는 위치를 저장
-    # 자르는 방법의 '개수'만 반환
-    return len(answer)
+            answer += 1           
+    return answer
