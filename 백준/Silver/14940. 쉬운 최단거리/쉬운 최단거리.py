@@ -5,12 +5,12 @@ n, m = map(int, sys.stdin.readline().split())
 graph = [list(map(int, sys.stdin.readline().split())) for _ in range(n)]
 result = [[-1]*m for _ in range(n)]
 
-start_x, start_y = 0, 0
+queue = deque()
 
 for i in range(n):
     for j in range(m):
         if graph[i][j] == 2:
-            queue = deque([(i, j)])
+            queue.append((i, j))
             result[i][j] = 0
         elif graph[i][j] == 0:
             result[i][j] = 0
