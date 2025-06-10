@@ -1,5 +1,4 @@
 import sys
-import math
 
 X, Y = map(int, sys.stdin.readline().split())
 answer = -1
@@ -11,7 +10,7 @@ if X == Y:
 else:
     while left <= right:
         mid = (left+right) // 2
-        new_z = math.floor(((Y+mid)/(X+mid))*100)
+        new_z = ((Y+mid)*100) // (X+mid)
         if new_z != z:
             answer = mid
             right = mid - 1
